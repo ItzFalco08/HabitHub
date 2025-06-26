@@ -5,7 +5,7 @@
     "jsx": "react-native", // ✅ Added this to fix typescript error on VS Code
     "paths": {
       "@/*": [
-        "./*"
+        "./src/*"
       ]
     }
   },
