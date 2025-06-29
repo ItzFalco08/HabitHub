@@ -1,13 +1,16 @@
-import { ThemeProvider } from "@/context/useTheme";
+import { Stack } from 'expo-router';
 import "../../global.css";
-import App from "./App";
+import {SafeAreaProvider} from 'react-native-safe-area-context';
+import { PaperProvider, MD3LightTheme } from "react-native-paper";
 
-const _layout = () => {
+export default function RootLayout() {
   return (
-    <ThemeProvider>
-      <App />
-    </ThemeProvider>
-  )
+    <PaperProvider theme={MD3LightTheme}>
+      <SafeAreaProvider>
+        <Stack>
+          <Stack.Screen name="index" options={{ headerShown: false }} />
+        </Stack>
+      </SafeAreaProvider>
+    </PaperProvider>
+  );
 }
-
-export default _layout;
