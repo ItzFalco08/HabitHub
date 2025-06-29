@@ -1,7 +1,8 @@
 import HomeScreen from '@/components/screens/HomeScreen';
 import { useState } from 'react';
-import { BottomNavigation } from 'react-native-paper';
 import SettingsScreen from './screens/SettingsScreen';
+import { ExtendedMD3Theme } from '@/constants/paperThemes';
+import {useTheme as usePaperTheme, BottomNavigation} from 'react-native-paper';
 
 const BottomNav = () => {
     const [index, setIndex] = useState(0);
@@ -9,6 +10,7 @@ const BottomNav = () => {
         { key: 'home', title: 'home', focusedIcon: 'home', unfocusedIcon: 'home-outline' },
         { key: 'settings', title: 'settings', focusedIcon: 'cog', unfocusedIcon: 'cog-outline' },
     ])
+  const paperTheme = usePaperTheme() as ExtendedMD3Theme;
 
     const renderScene = BottomNavigation.SceneMap({
         home: HomeScreen,
@@ -23,7 +25,7 @@ const BottomNav = () => {
             }}
             onIndexChange={setIndex}
             renderScene={renderScene}
-            barStyle={{maxHeight: 80, minHeight: 60, height: "10%"}}
+            barStyle={{maxHeight: 80, minHeight: 60, height: "10%", backgroundColor: paperTheme.colors.surface}}
             
         />
     )
