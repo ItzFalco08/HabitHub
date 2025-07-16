@@ -17,9 +17,7 @@ const PaperProvider = ({children} : {children: React.ReactNode}) => {
 const _layout = () => {
   return (
     <CustomThemeProvider>
-      <PaperProvider> {/* can use useTheme */}
-
-        {/* setup done for paper theme and provider */}
+      <PaperProvider> 
         <Stack>
           <Stack.Screen name="(tabs)" options={{headerShown: false}} />
         </Stack>
