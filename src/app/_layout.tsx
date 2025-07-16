@@ -1,37 +1,33 @@
-import { customDarkTheme, customLightTheme } from '@/constants/paperThemes';
-import { ThemeProvider, useTheme } from '@/context/useTheme';
-import { Stack } from 'expo-router';
-import { StatusBar } from 'expo-status-bar';
-import { PaperProvider } from "react-native-paper";
-import { SafeAreaProvider } from 'react-native-safe-area-context';
-import "../../global.css";
+import { useTheme, ThemeProvider as CustomThemeProvider } from "@/context/useTheme"
+import { Stack } from "expo-router"
+import { Provider, MD3DarkTheme, MD3LightTheme } from "react-native-paper"
+import "../../global.css"
 
-// made it component so it can re-render when theme changes
-// PaperProvider needs to update its theme when the app theme changes
-function PaperThemeProvider({ children }: { children: React.ReactNode }) {
-  const { theme } = useTheme();
-  const isDark = theme === 'dark';
-  const currentThemeStyles = isDark ? customDarkTheme : customLightTheme;
-    
+const PaperProvider = ({children} : {children: React.ReactNode}) => {
+  const { theme } = useTheme(); // cyrrent theme from context
+  const paperTheme = theme === 'dark' ? MD3DarkTheme : MD3LightTheme
+
   return (
-    <PaperProvider theme={currentThemeStyles}>
-      {/* StatusBar adapts to the current theme */}
-      <StatusBar style={isDark ? 'light' : 'dark'}/>
+    <Provider theme={paperTheme}>
       {children}
-    </PaperProvider>
-  );
+    </Provider>
+  )
 }
 
-export default function RootLayout() {
+const _layout = () => {
   return (
-    <ThemeProvider>
-      <PaperThemeProvider>
-        <SafeAreaProvider>
-          <Stack>
-            <Stack.Screen name="index" options={{ headerShown: false }} />
-          </Stack>
-        </SafeAreaProvider>
-      </PaperThemeProvider>
-    </ThemeProvider>
-  );
+    <CustomThemeProvider>
+      <PaperProvider> {/* can use useTheme */}
+
+        {/* setup done for paper theme and provider */}
+        <Stack>
+          <Stack.Screen name="(tabs)" options={{headerShown: false}} />
+        </Stack>
+      
+      
+      </PaperProvider>
+    </CustomThemeProvider>
+  )
 }
+
+export default _layout

@@ -32,8 +32,7 @@ async function getCurrentTheme(systemTheme: theme) {
   if (userPreference) {
     return userPreference === "dark" ? 'dark' : 'light';
   } else {
-    let theme: theme = systemTheme === 'dark' ? 'dark' : 'light';
-    return theme;
+    return systemTheme === "dark" ? 'dark' : 'light';
   }
 }
 
