@@ -1,20 +1,19 @@
-import { View } from 'react-native'
-import { Switch, Text, useTheme as usePaperTheme } from 'react-native-paper'
-import React from 'react'
+import Container from "@/components/Container"
 import { useTheme } from "@/context/useTheme"
+import React from 'react'
+import { Switch, Text } from 'react-native-paper'
 
 const Home = () => {
-  const themeStyle = usePaperTheme();
   const { theme, toggleTheme } = useTheme();
 
   return (
-    <View style={{backgroundColor: themeStyle.colors.surface}} className='h-full pt-24'>
-      <Text > home </Text>
+    <Container>
+      <Text className="text-2xl"> home </Text>
       <Switch 
         value={theme === 'dark'}
         onValueChange={toggleTheme}
       />
-    </View>
+    </Container>
   )
 }
  

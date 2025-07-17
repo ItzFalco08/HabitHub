@@ -1,11 +1,12 @@
-import { View, Text } from 'react-native'
+import { Text } from 'react-native-paper'
 import React from 'react'
+import Container from '@/components/Container'
 
 const Explore = () => {
   return (
-    <View>
+    <Container>
       <Text>Explore</Text>
-    </View>
+    </Container>
   )
 }
 

@@ -1,11 +1,12 @@
-import { View, Text } from 'react-native'
+import { Text } from 'react-native-paper'
 import React from 'react'
+import Container from '@/components/Container'
 
 const Analytics = () => {
   return (
-    <View>
+    <Container>
       <Text>Analytics</Text>
-    </View>
+    </Container>
   )
 }
 

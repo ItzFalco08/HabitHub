@@ -1,11 +1,12 @@
-import { View, Text } from 'react-native'
+import { Text } from 'react-native-paper'
 import React from 'react'
+import Container from '@/components/Container'
 
 const profile = () => {
   return (
-    <View>
+    <Container>
       <Text>profile</Text>
-    </View>
+    </Container>
   )
 }
 
